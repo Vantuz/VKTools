@@ -3,6 +3,8 @@ A nifty set of some simple tools working with vk.com. Currently availaible: `vk_
 
 ## vk_liker.py
 
+Ultimate autoliker tool for vk.com
+
 Requirements: `Python3`, `requests`
 
 Usage:
