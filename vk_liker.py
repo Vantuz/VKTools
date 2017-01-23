@@ -1,5 +1,5 @@
-from vk_items.acquirers import *
-from vk_items.items import *
+from vk_api.acquirers import *
+from vk_api.vk_items import *
 from vk_api.helper import VKAPIHelper
 
 import argparse
@@ -19,7 +19,7 @@ def get_helper(token_id = None):
 
 def parseargs():
     parser = argparse.ArgumentParser(description="Ultimate autoliker tool for vk.com")
-    parser.add_argument('target', metavar='TARGET_ID',
+    parser.add_argument('target', metavar='target_id',
     	help='id of the page to like (only wall will be liked)', type=int, nargs='+')
     return parser.parse_args()
 
