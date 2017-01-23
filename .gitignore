@@ -1,4 +1,6 @@
 tokens.json
+dialogs_downloader_files
+dialogs_downloader_lib/settings.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
