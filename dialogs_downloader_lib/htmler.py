@@ -149,3 +149,5 @@ def make_html(filename, messages, rewrite = False):
 			else:
 				for message in messages:
 					f_out.write(getMessage(message, True))
+		f_template.close()
+		f_out.close()

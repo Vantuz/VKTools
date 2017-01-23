@@ -35,5 +35,5 @@ for group in settings['dialogs_to_download']:
 			html_file = "%s/%s_%s-%d.html" % (html_dir, group['token'], dialog['name'], cnt)
 			print("Writing " + html_file)
 			is_last_file = len(messages) - i <= MESSAGES_IN_ONE_HTML_FILE
-			make_html(html_file, messages[i : min(len(messages) - i, MESSAGES_IN_ONE_HTML_FILE)])
+			make_html(html_file, messages[i : i + MESSAGES_IN_ONE_HTML_FILE], is_last_file)
 			cnt += 1
