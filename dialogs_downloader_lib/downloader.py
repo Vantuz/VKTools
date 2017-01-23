@@ -23,6 +23,7 @@ def download_dialog(helper, dialog_id, path, update = True):
 				'peer_id': dialog_id,
 				'rev': 1
 			})
+			print("%d left" % count)
 			offset += COUNT_TO_REQUEST
 			count -= COUNT_TO_REQUEST
 			res['response']['items'] += newRes['response']['items']

@@ -1,4 +1,5 @@
 import requests
+import time
 
 class VKAPIHelper(object):
 	def __init__(self, token = None):
