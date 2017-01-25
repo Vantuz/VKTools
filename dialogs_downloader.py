@@ -24,12 +24,14 @@ for group in settings['dialogs_to_download']:
 		json_dir = "%s/%s" % (JSONFILES_DIR, group['token'])
 		json_file = "%s/%s/%s_%s.json" % (JSONFILES_DIR, group['token'], group['token'], dialog['name'])
 		html_dir = "%s/%s/%s_%s" % (HTMLFILES_DIR, group['token'], group['token'], dialog['name'])
+		no_html_files = False
 		if not os.path.exists(json_dir):
 			os.makedirs(json_dir)
 		if not os.path.exists(html_dir):
 			os.makedirs(html_dir)
+			no_html_files = True
 		(changed, res) = download_dialog(helper, dialog['id'], json_file)
-		if changed:
+		if changed or no_html_files:
 			messages = res['response']['items']
 			cnt = 1
 			for i in range(0, len(messages), MESSAGES_IN_ONE_HTML_FILE):
