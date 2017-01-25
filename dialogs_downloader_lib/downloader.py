@@ -6,7 +6,9 @@ COUNT_TO_REQUEST = 200
 
 def download_dialog(helper, dialog_id, path, update = True):
 	res = None
+	changed = False
 	if not (update and os.path.isfile(path)):
+		changed = True
 		res = helper.apiRequest("messages.getHistory", {
 				'offset': 0,
 				'count': COUNT_TO_REQUEST,
@@ -43,6 +45,7 @@ def download_dialog(helper, dialog_id, path, update = True):
 		res['response']['in_read'] = newRes['response']['in_read']
 		res['response']['out_read'] = newRes['response']['out_read']
 		print("Need to download %d messages" % (newCount - oldcount))
+		changed = newCount != oldcount
 		offset = -COUNT_TO_REQUEST * 2
 		while len(newRes['response']['items']) > 0:
 			res['response']['items'] += newRes['response']['items'][::-1]
@@ -54,6 +57,8 @@ def download_dialog(helper, dialog_id, path, update = True):
 			})
 			offset -= COUNT_TO_REQUEST
 
-	f = codecs.open(path, 'w', "utf-8")
-	json.dump(res, f, ensure_ascii=False)
-	return res
+	if changed:
+		print("Writing json file")
+		f = codecs.open(path, 'w', "utf-8")
+		json.dump(res, f, ensure_ascii=False)
+	return (changed, res)

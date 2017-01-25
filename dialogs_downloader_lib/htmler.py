@@ -140,6 +140,7 @@ def getMessage(message, isNotFwd):
 
 def make_html(filename, messages, rewrite = False):
 	if rewrite or (not os.path.isfile(filename)):
+		print("Writing html file")
 		f_template = open(TEMPLATE_FILE, "r")
 		f_out = open(filename, "w", encoding="utf-8")
 		for l in f_template:
