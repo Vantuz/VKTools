@@ -2,6 +2,7 @@ from vk_api.helper import VKAPIHelper
 
 import os.path
 import time
+import emoji
 
 TEMPLATE_FILE = "dialogs_downloader_lib/template.html"
 
@@ -42,8 +43,8 @@ def getUserInfo(user_id):
 	return users_map[user_id]
 
 def replaceEmoji(symbol):
-	symbol_hex_str = hex(ord(symbol))[2::].upper()
-	if symbol_hex_str in emojiTable:
+	symbol_hex_str = "".join(map(lambda x: hex(x)[2::].zfill(2), symbol.encode("utf-16BE"))).upper()
+	if symbol in emoji.UNICODE_EMOJI:
 		return '<img src="http://vk.com/images/emoji/%s.png" alt="%s" />' % (symbol_hex_str, symbol)
 	else:
 		return symbol
