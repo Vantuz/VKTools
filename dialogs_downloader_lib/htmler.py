@@ -29,8 +29,8 @@ def getUserInfo(user_id):
 	return users_map[user_id]
 
 def replaceEmoji(symbol):
-	symbol_hex_str = "".join(map(lambda x: hex(x)[2::].zfill(2), symbol.encode("utf-16BE"))).upper()
 	if symbol in emoji.UNICODE_EMOJI:
+		symbol_hex_str = "".join(map(lambda x: hex(x)[2::].zfill(2), symbol.encode("utf-16BE"))).upper()
 		return '<img src="http://vk.com/images/emoji/%s.png" alt="%s" />' % (symbol_hex_str, symbol)
 	else:
 		return symbol
