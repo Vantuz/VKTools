@@ -33,7 +33,7 @@ def download_dialog(helper, dialog_id, path, update = True):
 		f = codecs.open(path, 'r', "utf-8")
 		res = json.load(f)
 		last_msg_id = res['response']['items'][-1]['id'] if len(res['response']['items']) > 0 else 0
-		oldcount = res['response']['count']
+		oldCount = res['response']['count']
 		newRes = helper.apiRequest("messages.getHistory", {
 				'offset': -COUNT_TO_REQUEST,
 				'count': COUNT_TO_REQUEST,
@@ -44,8 +44,8 @@ def download_dialog(helper, dialog_id, path, update = True):
 		res['response']['count'] = newCount
 		res['response']['in_read'] = newRes['response']['in_read']
 		res['response']['out_read'] = newRes['response']['out_read']
-		print("Need to download %d messages" % (newCount - oldcount))
-		changed = newCount != oldcount
+		print("Need to download %d messages" % (newCount - oldCount))
+		changed = newCount != oldCount
 		offset = -COUNT_TO_REQUEST * 2
 		while len(newRes['response']['items']) > 0:
 			res['response']['items'] += newRes['response']['items'][::-1]
@@ -61,4 +61,4 @@ def download_dialog(helper, dialog_id, path, update = True):
 		print("Writing json file")
 		f = codecs.open(path, 'w', "utf-8")
 		json.dump(res, f, ensure_ascii=False)
-	return (changed, res)
+	return (oldCount, res)
