@@ -19,7 +19,7 @@ def download_dialog(helper, dialog_id, path, update = True):
 		print("Need to download %d messages" % res['response']['count'])
 		offset = COUNT_TO_REQUEST
 		count = res['response']['count'] - COUNT_TO_REQUEST
-		oldCount = count
+		oldCount = 0
 		while count > 0:
 			newRes = helper.apiRequest("messages.getHistory", {
 				'offset': offset,
