@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
 from vk_api.acquirers import *
 from vk_api.vk_items import *
