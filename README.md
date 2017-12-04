@@ -1,6 +1,14 @@
 # VKTools
 A nifty set of some simple tools working with vk.com. Currently availaible: `vk_liker.py`
 
+## ck_auth.py
+
+Tool for acquiring VK API tokens
+
+Requirements: `Python3`, `requests`, `mechanicalsoup`
+
+Usage: run `./vk_auth.py login pass` (optionally with `--client_id CLIENT_ID --scope SCOPE`)
+
 ## vk_liker.py
 
 Ultimate autoliker tool for vk.com
