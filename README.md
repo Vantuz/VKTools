@@ -1,7 +1,7 @@
 # VKTools
 A nifty set of some simple tools working with vk.com. Currently availaible: `vk_liker.py`
 
-## ck_auth.py
+## vk_auth.py
 
 Tool for acquiring VK API tokens
 
